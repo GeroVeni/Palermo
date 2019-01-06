@@ -1,6 +1,5 @@
 package dummies.palermo;
 
-import android.media.Image;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

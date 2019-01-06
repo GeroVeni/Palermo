@@ -25,23 +25,4 @@
         android:paddingRight="16dp"
         android:src="@drawable/options_lines" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:id="@+id/main_menu_side_menu_frame"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-        </FrameLayout>
-
-        <Space
-            android:id="@+id/closing_space"
-            android:layout_width="80dp"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
 </FrameLayout>

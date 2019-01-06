@@ -37,7 +37,7 @@ public class MainMenuFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.activity_main_menu, container, false);
+        view = inflater.inflate(R.layout.fragment_main_menu, container, false);
 
         ImageView image = view.findViewById(R.id.main_menu_side_menu_button);
         image.setOnClickListener(new View.OnClickListener() {
@@ -45,23 +45,6 @@ public class MainMenuFragment extends Fragment {
             public void onClick(View v) {
                 // Open side menu
                 ((MainMenuActivity)getActivity()).openSideMenu();
-            }
-        });
-
-        Space space = view.findViewById(R.id.closing_space);
-        space.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Close side menu
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                Fragment fragment = fm.findFragmentById(R.id.main_menu_side_menu_frame);
-                if (fragment != null) {
-                    fragment = new SideMenuFragment();
-                    FragmentTransaction transaction = fm.beginTransaction();
-                    transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_out_right);
-                    transaction.hide(fragment);
-                    transaction.commit();
-                }
             }
         });
 

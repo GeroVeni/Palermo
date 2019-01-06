@@ -5,7 +5,22 @@ public enum Character {
     ThiefKnown,
     ThiefSecret,
     Whore,
-    Doctor,
+    Doctor;
 //    Witch,
 //    Citizen
+
+    public static boolean isCharacterGood(Character character) {
+        switch (character) {
+            case ThiefKnown:
+                return false;
+            case ThiefSecret:
+                return false;
+            case Whore:
+                return false;
+            default:
+                return true;
+        }
+    }
 }
+
+
