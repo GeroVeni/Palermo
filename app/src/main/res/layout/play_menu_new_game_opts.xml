@@ -13,12 +13,14 @@
             android:id="@+id/play_menu_new_game_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/play_menu_new_game_button_cont_desc"
             app:srcCompat="@drawable/new_button" />
 
         <ImageView
             android:id="@+id/play_menu_load_game_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/play_menu_load_game_button_cont_desc"
             app:srcCompat="@drawable/load_button" />
     </LinearLayout>
 

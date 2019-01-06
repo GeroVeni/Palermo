@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -22,6 +23,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Space;
 import android.widget.VideoView;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class MainMenuFragment extends Fragment {
 
@@ -114,6 +119,18 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
+
+        // Load ad
+        AdView adView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                Log.i(TAG, "Ad Loaded");
+            }
+        });
+
         return view;
     }
 
@@ -148,15 +165,3 @@ public class MainMenuFragment extends Fragment {
         playOptsView.setVisibility(View.INVISIBLE);
     }
 }
-
-//View getPlayMenuView(Context context, int index) {
-//    FrameLayout playFrame = new FrameLayout(context);
-//    LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-//    playFrame.setLayoutParams(params);
-//    switch (index) {
-//        case 0:
-//            // Play button
-//
-//
-//    }
-//}

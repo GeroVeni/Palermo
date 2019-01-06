@@ -3,26 +3,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <VideoView android:id="@+id/main_menu_intro_animation_frame"
+    <VideoView
+        android:id="@+id/main_menu_intro_animation_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent">
-    </VideoView>
-
-    <FrameLayout
-        android:id="@+id/main_menu_play_menu_frame"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:background="@drawable/wall" />
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/main_menu_background_video_cont_desc"></VideoView>
 
     <ImageView
         android:id="@+id/main_menu_side_menu_button"
+        android:contentDescription="@string/side_menu_button_cont_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
         android:src="@drawable/options_lines" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/main_menu_play_menu_frame"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@drawable/wall" >
+
+        </FrameLayout>
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+    </LinearLayout>
 
 </FrameLayout>

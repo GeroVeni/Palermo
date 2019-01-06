@@ -13,6 +13,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import dummies.palermo.Characters.CharactersFragment;
 
 public class MainMenuActivity extends AppCompatActivity {
@@ -25,6 +29,9 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize ads
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
 
         // Removes the support title bar and makes the app fullscreen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -52,8 +59,8 @@ public class MainMenuActivity extends AppCompatActivity {
                 R.id.side_menu_item_rules,
                 R.id.side_menu_item_info
         };
-        for (int i = 0; i < menuItemIds.length; i++) {
-            TextView item = findViewById(menuItemIds[i]);
+        for (int menuItemId : menuItemIds) {
+            TextView item = findViewById(menuItemId);
             item.setOnClickListener(new SideMenuButtonOnClickListener());
         }
 
@@ -73,7 +80,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {

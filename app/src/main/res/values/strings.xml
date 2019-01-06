@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">Palermo</string>
-    <string name="title_activity_nav_drawer">NavDrawerActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="side_menu_button_cont_desc">Side Menu Button</string>
+    <string name="side_menu_account">Account</string>
+    <string name="side_menu_settings">Settings</string>
+    <string name="side_menu_info">Info</string>
+    <string name="side_menu_characters">Characters</string>
+    <string name="side_menu_rules">Rules</string>
+    <string name="side_menu_header_icon_cont_desc">Profile Picture</string>
+    <string name="play_menu_play_button_cont_desc">Play Button</string>
+    <string name="play_menu_new_game_button_cont_desc">New Game Button</string>
+    <string name="play_menu_load_game_button_cont_desc">Load Game Button</string>
+    <string name="main_menu_background_video_cont_desc">Main menu background video</string>
+    <string name="character_item_small_icon_cont_desc">Character Icon</string>
+    <string name="character_item_large_image_cont_desc">Character image</string>
 </resources>

@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start|bottom"
             android:layout_margin="16dp"
-            android:src="@drawable/sidemenu_account_icon_placeholder"/>
+            android:contentDescription="@string/side_menu_header_icon_cont_desc"
+            android:src="@drawable/sidemenu_account_icon_placeholder" />
 
     </FrameLayout>
 
