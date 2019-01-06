@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:src="@drawable/sidemenu_rules">
+    android:src="@drawable/sidemenu_rules"
+    android:orientation="vertical">
 
-</ImageView>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales mollis ornare. In laoreet eleifend diam, ut ultrices nisl congue at. Nullam pulvinar erat lectus. Cras consectetur sagittis sem, sed venenatis sapien pellentesque at. Pellentesque luctus tristique sem, et pretium orci molestie ut. Aenean faucibus nibh vel neque tincidunt rutrum. Aenean aliquet arcu quis erat pretium, eu hendrerit libero molestie. Vestibulum tempor ipsum ac maximus efficitur. In hac habitasse platea dictumst. Sed tellus ligula, molestie sit amet mauris porta, mattis placerat massa. Sed quis fringilla ante" />
+
+</LinearLayout>

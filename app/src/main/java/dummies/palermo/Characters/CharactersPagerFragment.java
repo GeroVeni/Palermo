@@ -49,7 +49,7 @@ public class CharactersPagerFragment extends Fragment {
 
             @Override
             public int getCount() {
-                return CharacterBase.getCharacterBase().getCharacters().size();
+                return CharacterBase.getCharacterBase().getSize();
             }
         });
 

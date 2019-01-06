@@ -24,30 +24,51 @@ public class CharacterBase {
     private CharacterBase() {
         // Make character item list
         characterItemList = new ArrayList<>();
-        // Policeman
-        int imgID = R.drawable.sidemenu_acount;
-        CharacterItem item = new CharacterItem.Builder()
-                .addIconID(imgID)
-                .addImageID(imgID)
-                .addTitle("Policeman")
-                .addSubtitle("The Law")
-                .addInfo("Fuck the police, coming straight from the underground")
-                .create();
-        characterItemList.add(item);
 
-        // Whore
-        imgID = R.drawable.sidemenu_settings;
-        item = new CharacterItem.Builder()
-                .addIconID(imgID)
-                .addImageID(imgID)
-                .addTitle("Whore")
-                .addSubtitle("The lookout")
-                .addInfo("I'm such a fucking whore; I love it")
-                .create();
-        characterItemList.add(item);
+        for (Character character : Character.values()) {
+            characterItemList.add(getCharacter(character));
+        }
     }
 
+    private CharacterItem getCharacter(Character character) {
+        switch (character) {
+            case Policeman:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.sidemenu_acount)
+                        .addImageID(R.drawable.sidemenu_acount)
+                        .addTitle("Policeman")
+                        .addSubtitle("The Law")
+                        .addInfo("Fuck the police, coming straight from the underground")
+                        .create();
+            case ThiefKnown:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.sidemenu_characters)
+                        .addImageID(R.drawable.sidemenu_characters)
+                        .addTitle("Thief Known")
+                        .addSubtitle("Out and about")
+                        .addInfo("The decoy")
+                        .create();
+            case ThiefSecret:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.sidemenu_info)
+                        .addImageID(R.drawable.sidemenu_info)
+                        .addTitle("Thief Secret")
+                        .addSubtitle("???")
+                        .addInfo("Who knows ... ?")
+                        .create();
+            case Whore:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.sidemenu_settings)
+                        .addImageID(R.drawable.sidemenu_settings)
+                        .addTitle("Whore")
+                        .addSubtitle("The lookout")
+                        .addInfo("I'm such a fucking whore; I love it")
+                        .create();
+        }
 
+        // TODO: 06-Jan-19 Add error / warning; character missing
+        return new CharacterItem();
+    }
 
     public CharacterItem getCharacter(int position) {
         return characterItemList.get(position);
@@ -55,5 +76,9 @@ public class CharacterBase {
 
     public List<CharacterItem> getCharacters() {
         return characterItemList;
+    }
+
+    public int getSize() {
+        return characterItemList.size();
     }
 }

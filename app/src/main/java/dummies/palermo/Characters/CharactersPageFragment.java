@@ -51,7 +51,6 @@ public class CharactersPageFragment extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getFragmentManager();
                 CharactersFragment fragment = (CharactersFragment)getParentFragment();
                 fragment.onCloseCharacter();
             }

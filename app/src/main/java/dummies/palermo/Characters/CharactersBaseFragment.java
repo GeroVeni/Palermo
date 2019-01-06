@@ -82,10 +82,6 @@ public class CharactersBaseFragment extends Fragment {
         }
     }
 
-    private List<CharacterItem> getCharacterList() {
-        return CharacterBase.getCharacterBase().getCharacters();
-    }
-
     private class CharacterAdapter extends RecyclerView.Adapter<CharacterHolder> {
 
         @NonNull
@@ -103,7 +99,7 @@ public class CharactersBaseFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return getCharacterList().size();
+            return CharacterBase.getCharacterBase().getSize();
         }
     }
 }
