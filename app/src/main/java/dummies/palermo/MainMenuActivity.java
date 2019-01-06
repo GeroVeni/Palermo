@@ -1,5 +1,6 @@
 package dummies.palermo;
 
+import android.media.Image;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import dummies.palermo.Characters.CharactersFragment;
@@ -55,6 +57,19 @@ public class MainMenuActivity extends AppCompatActivity {
             TextView item = findViewById(menuItemIds[i]);
             item.setOnClickListener(new SideMenuButtonOnClickListener());
         }
+
+        // TODO: 06-Jan-19 Temp back button
+        ImageView accountButton = findViewById(R.id.side_menu_header_icon);
+        accountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closeSideMenu();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,
+                                new MainMenuFragment())
+                        .commit();
+            }
+        });
     }
 
     @Override

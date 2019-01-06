@@ -64,6 +64,14 @@ public class CharacterBase {
                         .addSubtitle("The lookout")
                         .addInfo("I'm such a fucking whore; I love it")
                         .create();
+            case Doctor:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.sidemenu_rules)
+                        .addImageID(R.drawable.doctor_large)
+                        .addTitle("Doctor")
+                        .addSubtitle("The saver")
+                        .addInfo("An apple a day keeps the doctor away")
+                        .create();
         }
 
         // TODO: 06-Jan-19 Add error / warning; character missing

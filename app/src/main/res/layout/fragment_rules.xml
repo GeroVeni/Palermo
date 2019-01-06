@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8dp"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
+    android:padding="8dp"
     android:src="@drawable/sidemenu_rules">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Rules"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 
     <TextView
@@ -20,6 +22,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="Overview"
+        android:textColor="@color/colorAccent"
         android:textSize="20sp" />
 
     <View
@@ -33,6 +36,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:singleLine="false"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales mollis ornare. In laoreet eleifend diam, ut ultrices nisl congue at. Nullam pulvinar erat lectus. Cras consectetur sagittis sem, sed venenatis sapien pellentesque at. Pellentesque luctus tristique sem, et pretium orci molestie ut. Aenean faucibus nibh vel neque tincidunt rutrum. Aenean aliquet arcu quis erat pretium, eu hendrerit libero molestie. Vestibulum tempor ipsum ac maximus efficitur. In hac habitasse platea dictumst. Sed tellus ligula, molestie sit amet mauris porta, mattis placerat massa. Sed quis fringilla ante" />
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales mollis ornare. In laoreet eleifend diam, ut ultrices nisl congue at. Nullam pulvinar erat lectus. Cras consectetur sagittis sem, sed venenatis sapien pellentesque at. Pellentesque luctus tristique sem, et pretium orci molestie ut. Aenean faucibus nibh vel neque tincidunt rutrum. Aenean aliquet arcu quis erat pretium, eu hendrerit libero molestie. Vestibulum tempor ipsum ac maximus efficitur. In hac habitasse platea dictumst. Sed tellus ligula, molestie sit amet mauris porta, mattis placerat massa. Sed quis fringilla ante"
+        android:textColor="@color/colorAccent" />
 
 </LinearLayout>

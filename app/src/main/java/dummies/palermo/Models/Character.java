@@ -4,5 +4,8 @@ public enum Character {
     Policeman,
     ThiefKnown,
     ThiefSecret,
-    Whore
+    Whore,
+    Doctor,
+//    Witch,
+//    Citizen
 }
