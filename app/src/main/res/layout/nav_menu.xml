@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/side_menu_item_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/sidemenu_acount"
+        android:drawablePadding="8dp"
+        android:text="Account"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="@font/gotham_gr_book"/>
+
+    <TextView
+        android:id="@+id/side_menu_item_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/sidemenu_settings"
+        android:drawablePadding="8dp"
+        android:text="Settings"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/gotham_gr_book"/>
+
+    <TextView
+        android:id="@+id/side_menu_item_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/sidemenu_info"
+        android:drawablePadding="8dp"
+        android:text="Info"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/gotham_gr_book"/>
+
+    <TextView
+        android:id="@+id/side_menu_item_characters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/sidemenu_characters"
+        android:drawablePadding="8dp"
+        android:text="Characters"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/gotham_gr_book"/>
+
+    <TextView
+        android:id="@+id/side_menu_item_rules"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/sidemenu_rules"
+        android:drawablePadding="8dp"
+        android:text="Rules"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/gotham_gr_book"/>
+
+
+
+</LinearLayout>
