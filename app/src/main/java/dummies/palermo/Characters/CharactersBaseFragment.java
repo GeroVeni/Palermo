@@ -21,6 +21,8 @@ import dummies.palermo.R;
 
 public class CharactersBaseFragment extends Fragment {
 
+    public static final int CHARACTERS_PER_ROW = 2;
+
     RecyclerView recyclerView;
     CharactersFragment parentFragment;
 
@@ -30,7 +32,7 @@ public class CharactersBaseFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_characters_base, container, false);
 
         recyclerView = view.findViewById(R.id.fragment_characters_base_recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), CHARACTERS_PER_ROW));
 
         parentFragment = (CharactersFragment)getParentFragment();
 
@@ -51,15 +53,11 @@ public class CharactersBaseFragment extends Fragment {
         int characterID;
 
         ImageView icon;
-        TextView title;
-        TextView subtitle;
 
         public CharacterHolder(View itemView) {
             super(itemView);
 
             icon = itemView.findViewById(R.id.character_item_small_icon);
-            title = itemView.findViewById(R.id.character_item_small_title);
-            subtitle = itemView.findViewById(R.id.character_item_small_subtitle);
 
             itemView.setOnClickListener(this);
         }
@@ -69,15 +67,11 @@ public class CharactersBaseFragment extends Fragment {
             CharacterItem item = CharacterBase.getCharacterBase().getCharacter(characterID);
 
             icon.setImageResource(item.getIconID());
-            title.setText(item.getTitle());
-            subtitle.setText(item.getSubtitle());
         }
 
         @Override
         public void onClick(View view) {
             // Open character view pager
-            Snackbar.make(view, "Open character " + title.getText().toString(),
-                    Snackbar.LENGTH_SHORT).show();
             parentFragment.onOpenCharacter(characterID);
         }
     }

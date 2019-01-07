@@ -3,6 +3,6 @@
     android:id="@+id/fragment_characters_base_recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="#000000">
 
 </android.support.v7.widget.RecyclerView>

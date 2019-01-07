@@ -39,14 +39,10 @@ public class CharactersPageFragment extends Fragment {
         CharacterItem item = CharacterBase.getCharacterBase().getCharacter(characterID);
 
         ImageView imageView = view.findViewById(R.id.character_item_large_image);
-//        TextView titleView = view.findViewById(R.id.character_item_large_title);
-//        TextView subtitleView = view.findViewById(R.id.character_item_large_subtitle);
         TextView infoView = view.findViewById(R.id.character_item_large_info);
 
         imageView.setImageResource(item.getImageID());
-//        titleView.setText(item.getTitle());
-//        subtitleView.setText(item.getSubtitle());
-        infoView.setText(item.getInfo());
+//        infoView.setText(item.getInfo());
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

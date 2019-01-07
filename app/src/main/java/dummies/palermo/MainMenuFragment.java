@@ -10,10 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +18,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Space;
 import android.widget.VideoView;
 
 import com.google.android.gms.ads.AdListener;
@@ -119,18 +115,6 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-
-        // Load ad
-        AdView adView = view.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-        adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                Log.i(TAG, "Ad Loaded");
-            }
-        });
-
         return view;
     }
 
@@ -146,7 +130,8 @@ public class MainMenuFragment extends Fragment {
         super.onResume();
 
         final VideoView videoView = view.findViewById(R.id.main_menu_intro_animation_frame);
-        Uri uri = Uri.parse("android.resource://"+getActivity().getPackageName()+"/"+R.raw.video_v3);
+        Uri uri = Uri.parse("android.resource://"+getActivity().getPackageName()+"/"
+                + R.raw.main_menu_background_video);
         videoView.setVideoURI(uri);
         videoView.start();
         videoView.setOnCompletionListener ( new MediaPlayer.OnCompletionListener() {

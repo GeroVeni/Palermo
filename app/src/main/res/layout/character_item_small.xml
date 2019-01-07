@@ -12,19 +12,4 @@
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/character_item_small_icon_cont_desc" />
 
-    <TextView
-        android:id="@+id/character_item_small_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/character_item_small_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/colorAccent" />
-
 </LinearLayout>

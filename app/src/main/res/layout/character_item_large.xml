@@ -3,9 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
+    android:background="#000000"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
-    android:padding="16dp">
+    android:paddingStart="16dp"
+    android:paddingTop="52dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="52dp">
 
     <ImageView
         android:id="@+id/character_item_large_image"
@@ -14,14 +17,14 @@
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/character_item_large_image_cont_desc" />
 
-<!--<TextView-->
+    <!--<TextView-->
     <!--android:id="@+id/character_item_large_title"-->
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content"-->
     <!--android:layout_gravity="center_horizontal"-->
     <!--android:textSize="24sp" />-->
 
-<!--<TextView-->
+    <!--<TextView-->
     <!--android:id="@+id/character_item_large_subtitle"-->
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content"-->

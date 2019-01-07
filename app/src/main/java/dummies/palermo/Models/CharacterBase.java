@@ -1,8 +1,5 @@
 package dummies.palermo.Models;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,45 +29,70 @@ public class CharacterBase {
 
     private CharacterItem getCharacter(Character character) {
         switch (character) {
-            case Policeman:
-                return new CharacterItem.Builder()
-                        .addIconID(R.drawable.sidemenu_acount)
-                        .addImageID(R.drawable.sidemenu_acount)
-                        .addTitle("Policeman")
-                        .addSubtitle("The Law")
-                        .addInfo("Fuck the police, coming straight from the underground")
-                        .create();
             case ThiefKnown:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.sidemenu_characters)
-                        .addImageID(R.drawable.sidemenu_characters)
+                        .addIconID(R.drawable.ic_hidden_thief_icon)
+                        .addImageID(R.drawable.ic_hidden_thief_image)
                         .addTitle("Thief Known")
                         .addSubtitle("Out and about")
                         .addInfo("The decoy")
                         .create();
             case ThiefSecret:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.sidemenu_info)
-                        .addImageID(R.drawable.sidemenu_info)
+                        .addIconID(R.drawable.ic_visible_thief_icon)
+                        .addImageID(R.drawable.ic_visible_thief_image)
                         .addTitle("Thief Secret")
                         .addSubtitle("???")
                         .addInfo("Who knows ... ?")
                         .create();
+            case Policeman:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.ic_policeman_icon)
+                        .addImageID(R.drawable.ic_policeman_image)
+                        .addTitle("Policeman")
+                        .addSubtitle("The Law")
+                        .addInfo("Fuck the police, coming straight from the underground")
+                        .create();
             case Whore:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.sidemenu_settings)
-                        .addImageID(R.drawable.sidemenu_settings)
+                        .addIconID(R.drawable.ic_whore_icon)
+                        .addImageID(R.drawable.ic_whore_image)
                         .addTitle("Whore")
                         .addSubtitle("The lookout")
                         .addInfo("I'm such a fucking whore; I love it")
                         .create();
             case Doctor:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.sidemenu_rules)
-                        .addImageID(R.drawable.doctor_large)
+                        .addIconID(R.drawable.ic_doctor_icon)
+                        .addImageID(R.drawable.ic_doctor_image)
                         .addTitle("Doctor")
                         .addSubtitle("The saver")
                         .addInfo("An apple a day keeps the doctor away")
+                        .create();
+            case Citizen:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.ic_citizen_icon)
+                        .addImageID(R.drawable.ic_citizen_image)
+                        .create();
+            case Witch:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.ic_witch_icon)
+                        .addImageID(R.drawable.ic_witch_image)
+                        .create();
+            case Hunter:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.ic_hunter_icon)
+                        .addImageID(R.drawable.ic_hunter_image)
+                        .create();
+            case Milkman:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.ic_milkman_icon)
+                        .addImageID(R.drawable.ic_milkman_image)
+                        .create();
+            case Roommates:
+                return new CharacterItem.Builder()
+                        .addIconID(R.drawable.ic_roomates_icon)
+                        .addImageID(R.drawable.ic_roomates_image)
                         .create();
         }
 

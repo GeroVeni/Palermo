@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/main_menu_background_video_cont_desc"></VideoView>
+        android:contentDescription="@string/main_menu_background_video_cont_desc" />
 
     <ImageView
         android:id="@+id/main_menu_side_menu_button"
@@ -34,12 +34,6 @@
 
         </FrameLayout>
 
-        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
     </LinearLayout>
 
 </FrameLayout>
