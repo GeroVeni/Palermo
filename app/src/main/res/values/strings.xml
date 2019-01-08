@@ -1,11 +1,56 @@
 <resources>
     <string name="app_name">Palermo</string>
-    <string name="side_menu_button_cont_desc">Side Menu Button</string>
+
+    <!-- Side menu texts -->
     <string name="side_menu_account">Account</string>
     <string name="side_menu_settings">Settings</string>
     <string name="side_menu_info">Info</string>
     <string name="side_menu_characters">Characters</string>
     <string name="side_menu_rules">Rules</string>
+
+    <!-- Character info -->
+    <string name="character_thief_known_title">Thief Known</string>
+    <string name="character_thief_known_subtitle">The decoy</string>
+    <string name="character_thief_known_info">Out and about</string>
+
+    <string name="character_thief_secret_title">Thief Secret</string>
+    <string name="character_thief_secret_subtitle">\?\?\?</string>
+    <string name="character_thief_secret_info">Who knows … ?</string>
+
+    <string name="character_policeman_title">Policeman</string>
+    <string name="character_policeman_subtitle">The Law</string>
+    <string name="character_policeman_info">Fuck the police, coming straight from the underground!</string>
+
+    <string name="character_whore_title">Whore</string>
+    <string name="character_whore_subtitle">The lookout</string>
+    <string name="character_whore_info">I\'m such a fucking whore; I love it!</string>
+
+    <string name="character_doctor_title">Doctor</string>
+    <string name="character_doctor_subtitle">The saver</string>
+    <string name="character_doctor_info">An apple a day keeps the doctor away</string>
+
+    <string name="character_citizen_title">Citizen</string>
+    <string name="character_citizen_subtitle">The victim</string>
+    <string name="character_citizen_info">---</string>
+
+    <string name="character_witch_title">Witch</string>
+    <string name="character_witch_subtitle">The saverkiller</string>
+    <string name="character_witch_info">Maleficent</string>
+
+    <string name="character_hunter_title">Hunter</string>
+    <string name="character_hunter_subtitle">The revenge</string>
+    <string name="character_hunter_info">Are we the hunter or are we the pray?</string>
+
+    <string name="character_milkman_title">Milkman</string>
+    <string name="character_milkman_subtitle">The comic relief</string>
+    <string name="character_milkman_info">MILK! MILK! MILK!</string>
+
+    <string name="character_roommates_title">Roomates</string>
+    <string name="character_roommates_subtitle">The innocent</string>
+    <string name="character_roommates_info">Two is better than one!</string>
+
+    <!-- Image content descriptions -->
+    <string name="side_menu_button_cont_desc">Side Menu Button</string>
     <string name="side_menu_header_icon_cont_desc">Profile Picture</string>
     <string name="play_menu_play_button_cont_desc">Play Button</string>
     <string name="play_menu_new_game_button_cont_desc">New Game Button</string>
@@ -13,4 +58,5 @@
     <string name="main_menu_background_video_cont_desc">Main menu background video</string>
     <string name="character_item_small_icon_cont_desc">Character Icon</string>
     <string name="character_item_large_image_cont_desc">Character image</string>
+
 </resources>

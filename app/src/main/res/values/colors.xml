@@ -3,4 +3,16 @@
     <color name="colorPrimary">#292728</color>
     <color name="colorPrimaryDark">#3B3B3C</color>
     <color name="colorAccent">#ed1b33</color>
+
+    <!-- Character colors -->
+    <color name="character_thief_known">#a61b11</color>
+    <color name="character_thief_secret">#c72424</color>
+    <color name="character_policeman">#375eed</color>
+    <color name="character_whore">#f430c3</color>
+    <color name="character_doctor">#72cc88</color>
+    <color name="character_citizen">#f7fa55</color>
+    <color name="character_witch">#28c402</color>
+    <color name="character_hunter">#ed6323</color>
+    <color name="character_milkman">#ffffff</color>
+    <color name="character_roommates">#eca71c</color>
 </resources>

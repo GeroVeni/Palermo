@@ -2,12 +2,23 @@ package dummies.palermo.Models;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.IdRes;
+import android.support.annotation.StringRes;
 import android.support.v4.content.res.ResourcesCompat;
 
+import dummies.palermo.R;
+
 public class CharacterItem {
-    private int iconID, imageID;
-    private String title, subtitle, info;
+    private @DrawableRes
+    int iconID, imageID;
+
+    private @StringRes
+    int titleID, subtitleID, infoID;
+
+    private @ColorRes
+    int colorID;
 
     static class Builder {
         CharacterItem item;
@@ -26,18 +37,23 @@ public class CharacterItem {
             return this;
         }
 
-        Builder addTitle(String title) {
-            item.title = title;
+        Builder addTitleID(@StringRes int titleID) {
+            item.titleID = titleID;
             return this;
         }
 
-        Builder addSubtitle(String subtitle) {
-            item.subtitle = subtitle;
+        Builder addSubtitleID(@StringRes int subtitleID) {
+            item.subtitleID = subtitleID;
             return this;
         }
 
-        Builder addInfo(String info) {
-            item.info = info;
+        Builder addInfoID(@StringRes int infoID) {
+            item.infoID = infoID;
+            return this;
+        }
+
+        Builder addColorID(@ColorRes int colorID) {
+            item.colorID = colorID;
             return this;
         }
 
@@ -46,27 +62,16 @@ public class CharacterItem {
         }
     }
 
-    CharacterItem(@DrawableRes int iconID, String title, String subtitle) {
-        this.iconID = iconID;
-        this.title = title;
-        this.subtitle = subtitle;
-        imageID = -1;
-        info = "";
-    }
-
-    CharacterItem(@DrawableRes int imageID, String title, String subtitle, String info) {
-        this.imageID = imageID;
-        this.title = title;
-        this.subtitle = subtitle;
-        this.info = info;
-        this.iconID = -1;
-    }
-
     CharacterItem() {
-        this(-1, "", "");
+        iconID = 0;
+        titleID = 0;
+        subtitleID = 0;
+        imageID = 0;
+        infoID = 0;
+        colorID = 0;
     }
 
-    public int getIconID() {
+    public @DrawableRes int getIconID() {
         return iconID;
     }
 
@@ -74,7 +79,7 @@ public class CharacterItem {
         this.iconID = iconID;
     }
 
-    public int getImageID() {
+    public @DrawableRes int getImageID() {
         return imageID;
     }
 
@@ -82,27 +87,27 @@ public class CharacterItem {
         this.imageID = imageID;
     }
 
-    public String getTitle() {
-        return title;
+    public @StringRes int getTitle() {
+        return titleID;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(@StringRes int titleID) {
+        this.titleID = titleID;
     }
 
-    public String getSubtitle() {
-        return subtitle;
+    public @StringRes int getSubtitle() {
+        return subtitleID;
     }
 
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
+    public void setSubtitle(@StringRes int subtitleID) {
+        this.subtitleID = subtitleID;
     }
 
-    public String getInfo() {
-        return info;
+    public @StringRes int getInfo() {
+        return infoID;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
+    public void setInfo(@StringRes int infoID) {
+        this.infoID = infoID;
     }
 }
