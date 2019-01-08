@@ -20,20 +20,13 @@
         android:paddingRight="16dp"
         android:src="@drawable/options_lines" />
 
-    <LinearLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_menu_play_menu_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="220dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/wall">
 
-        <FrameLayout
-            android:id="@+id/main_menu_play_menu_frame"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:background="@drawable/wall" >
-
-        </FrameLayout>
-
-    </LinearLayout>
+    </android.support.v4.view.ViewPager>
 
 </FrameLayout>

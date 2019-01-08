@@ -24,7 +24,6 @@ public class CharactersBaseFragment extends Fragment {
     public static final int CHARACTERS_PER_ROW = 2;
 
     RecyclerView recyclerView;
-    CharactersFragment parentFragment;
 
     @Nullable
     @Override
@@ -33,8 +32,6 @@ public class CharactersBaseFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.fragment_characters_base_recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), CHARACTERS_PER_ROW));
-
-        parentFragment = (CharactersFragment)getParentFragment();
 
         setupAdapter();
 
@@ -72,7 +69,8 @@ public class CharactersBaseFragment extends Fragment {
         @Override
         public void onClick(View view) {
             // Open character view pager
-            parentFragment.onOpenCharacter(characterID);
+            ((CharactersFragment)getParentFragment())
+                    .onOpenCharacter(characterID);
         }
     }
 

@@ -1,39 +1,30 @@
 package dummies.palermo;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import dummies.palermo.PlayMenuFragments.PlayMenuMainFragment;
+import dummies.palermo.PlayMenuFragments.PlayMenuOptionsFragment;
 
 public class MainMenuFragment extends Fragment {
 
     public static final String TAG = "MainMenuFragment";
 
-    View view;
-    FrameLayout playMenuFrame;
-    View playButtonView;
-    View playOptsView;
+    public static final int PLAY_MENU_PAGES = 2;
 
-    int screenWidth = 0;
+    View view;
+    ViewPager playMenuPager;
 
     @Nullable
     @Override
@@ -49,80 +40,26 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-        playMenuFrame = view.findViewById(R.id.main_menu_play_menu_frame);
-        playButtonView = inflater.inflate(R.layout.play_menu_play_button, playMenuFrame, false);
-        playOptsView = inflater.inflate(R.layout.play_menu_new_game_opts, playMenuFrame, false);
-        playMenuFrame.addView(playButtonView);
-        playMenuFrame.addView(playOptsView);
-
-        resetPlayMenu();
-
-        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        playMenuPager = view.findViewById(R.id.main_menu_play_menu_pager);
+        playMenuPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
-            public void onGlobalLayout() {
-                screenWidth = playMenuFrame.getWidth();
-                Log.i(TAG, "Width: " + screenWidth);
+            public Fragment getItem(int position) {
+                switch (position) {
+                    case 0:
+                        return new PlayMenuMainFragment();
+                    case 1:
+                        return new PlayMenuOptionsFragment();
+                }
+                return null;
             }
-        });
 
-        ImageView playButton = playButtonView.findViewById(R.id.play_menu_play_button);
-        playButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(playButtonView, "x",
-                        0, -screenWidth);
-                animator.setDuration(300);
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        playButtonView.setVisibility(View.INVISIBLE);
-                    }
-                });
-
-                ObjectAnimator animator2 = ObjectAnimator.ofFloat(playOptsView, "x",
-                        screenWidth, 0);
-                animator2.setDuration(300);
-                animator2.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-                        playOptsView.setVisibility(View.VISIBLE);
-                    }
-                });
-
-                AnimatorSet set = new AnimatorSet();
-                set.play(animator).with(animator2);
-                set.start();
-            }
-        });
-
-        ImageView newGameButton = playOptsView.findViewById(R.id.play_menu_new_game_button);
-        newGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start new game activity
-                Intent intent = new Intent(getActivity(), NewGameActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        ImageView loadGameButton = playOptsView.findViewById(R.id.play_menu_load_game_button);
-        loadGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start load game activity
-                Intent intent = new Intent(getActivity(), LoadGameActivity.class);
-                startActivity(intent);
+            public int getCount() {
+                return PLAY_MENU_PAGES;
             }
         });
 
         return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        resetPlayMenu();
     }
 
     @Override
@@ -143,10 +80,7 @@ public class MainMenuFragment extends Fragment {
         });
     }
 
-    void resetPlayMenu() {
-        playButtonView.setX(0);
-        playButtonView.setVisibility(View.VISIBLE);
-        playOptsView.setX(screenWidth);
-        playOptsView.setVisibility(View.INVISIBLE);
+    public void setPlayMenuPage(int page) {
+        playMenuPager.setCurrentItem(page, true);
     }
 }
