@@ -87,27 +87,35 @@ public class CharacterItem {
         this.imageID = imageID;
     }
 
-    public @StringRes int getTitle() {
+    public @StringRes int getTitleID() {
         return titleID;
     }
 
-    public void setTitle(@StringRes int titleID) {
+    public void setTitleID(@StringRes int titleID) {
         this.titleID = titleID;
     }
 
-    public @StringRes int getSubtitle() {
+    public @StringRes int getSubtitleID() {
         return subtitleID;
     }
 
-    public void setSubtitle(@StringRes int subtitleID) {
+    public void setSubtitleID(@StringRes int subtitleID) {
         this.subtitleID = subtitleID;
     }
 
-    public @StringRes int getInfo() {
+    public @StringRes int getInfoID() {
         return infoID;
     }
 
-    public void setInfo(@StringRes int infoID) {
+    public void setInfoID(@StringRes int infoID) {
         this.infoID = infoID;
+    }
+
+    public @ColorRes int getColorID() {
+        return colorID;
+    }
+
+    public void setColorID(@ColorRes int colorID) {
+        this.colorID = colorID;
     }
 }

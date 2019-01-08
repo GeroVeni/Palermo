@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,8 @@ public class CharactersPageFragment extends Fragment {
         TextView infoView = view.findViewById(R.id.character_item_large_info);
 
         imageView.setImageResource(item.getImageID());
-//        infoView.setText(item.getInfo());
+        infoView.setText(item.getInfoID());
+        infoView.setTextColor(getResources().getColor(item.getColorID()));
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
