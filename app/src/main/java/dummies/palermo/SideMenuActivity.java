@@ -50,12 +50,6 @@ public abstract class SideMenuActivity extends AppCompatActivity {
         AdView adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
-        adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                Log.i(TAG, "Ad Loaded");
-            }
-        });
 
         // Side menu buttons
         int [] menuItemIds = {
