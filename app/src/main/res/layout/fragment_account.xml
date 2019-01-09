@@ -13,7 +13,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sidemenu_account_icon_placeholder" />
+        app:srcCompat="@drawable/side_menu_account_icon_placeholder" />
 
     <TextView
         android:id="@+id/fragment_account_username_text"

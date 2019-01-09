@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -45,13 +43,13 @@ public class AccountFragment extends Fragment {
             public void onClick(View view) {
                 userLoggedIn = !userLoggedIn;
                 if (userLoggedIn) {
-                    profilePicture.setImageResource(R.drawable.sidemenu_acount);
+                    profilePicture.setImageResource(R.drawable.side_menu_acount);
                     usernameView.setText("George Venizelos");
                     loginButton.setText("Logout");
                     loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-                            R.drawable.ic_power_settings_new_black_24dp, 0);
+                            R.drawable.ic_logout, 0);
                 } else {
-                    profilePicture.setImageResource(R.drawable.sidemenu_account_icon_placeholder);
+                    profilePicture.setImageResource(R.drawable.side_menu_account_icon_placeholder);
                     usernameView.setText("");
                     loginButton.setText("Login");
                     loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);

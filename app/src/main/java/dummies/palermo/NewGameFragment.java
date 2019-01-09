@@ -1,5 +1,6 @@
 package dummies.palermo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -86,6 +87,9 @@ public class NewGameFragment extends Fragment {
                 String title = titleText.getText().toString();
                 int playerCount = getPlayers();
                 boolean mode = modeSwitch.isChecked();
+
+                Intent intent = new Intent(getActivity(), LobbyActivity.class);
+                startActivity(intent);
             }
         });
 

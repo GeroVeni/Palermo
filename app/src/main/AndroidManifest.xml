@@ -34,6 +34,8 @@
         <activity android:name=".ExtrasActivity" />
         <activity android:name=".NewGameActivity" />
         <activity android:name=".LoadGameActivity" />
+        <activity android:name=".Game.GameActivity" />
+        <activity android:name=".LobbyActivity" />
     </application>
 
 </manifest>

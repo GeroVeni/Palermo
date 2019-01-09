@@ -31,8 +31,8 @@ public class CharacterBase {
         switch (character) {
             case ThiefKnown:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_visible_thief_icon)
-                        .addImageID(R.drawable.ic_visible_thief_image)
+                        .addIconID(R.drawable.icon_thief_visible)
+                        .addImageID(R.drawable.image_thief_visible)
                         .addTitleID(R.string.character_thief_known_title)
                         .addSubtitleID(R.string.character_thief_known_subtitle)
                         .addInfoID(R.string.character_thief_known_info)
@@ -40,8 +40,8 @@ public class CharacterBase {
                         .create();
             case ThiefSecret:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_hidden_thief_icon)
-                        .addImageID(R.drawable.ic_hidden_thief_image)
+                        .addIconID(R.drawable.icon_thief_hidden)
+                        .addImageID(R.drawable.image_thief_hidden)
                         .addTitleID(R.string.character_thief_secret_title)
                         .addSubtitleID(R.string.character_thief_secret_subtitle)
                         .addInfoID(R.string.character_thief_secret_info)
@@ -49,8 +49,8 @@ public class CharacterBase {
                         .create();
             case Policeman:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_policeman_icon)
-                        .addImageID(R.drawable.ic_policeman_image)
+                        .addIconID(R.drawable.icon_policeman)
+                        .addImageID(R.drawable.image_policeman)
                         .addTitleID(R.string.character_policeman_title)
                         .addSubtitleID(R.string.character_policeman_subtitle)
                         .addInfoID(R.string.character_policeman_info)
@@ -58,8 +58,8 @@ public class CharacterBase {
                         .create();
             case Whore:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_whore_icon)
-                        .addImageID(R.drawable.ic_whore_image)
+                        .addIconID(R.drawable.icon_whore)
+                        .addImageID(R.drawable.image_whore)
                         .addTitleID(R.string.character_whore_title)
                         .addSubtitleID(R.string.character_whore_subtitle)
                         .addInfoID(R.string.character_whore_info)
@@ -67,8 +67,8 @@ public class CharacterBase {
                         .create();
             case Doctor:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_doctor_icon)
-                        .addImageID(R.drawable.ic_doctor_image)
+                        .addIconID(R.drawable.icon_doctor)
+                        .addImageID(R.drawable.image_doctor)
                         .addTitleID(R.string.character_doctor_title)
                         .addSubtitleID(R.string.character_doctor_subtitle)
                         .addInfoID(R.string.character_doctor_info)
@@ -76,8 +76,8 @@ public class CharacterBase {
                         .create();
             case Citizen:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_citizen_icon)
-                        .addImageID(R.drawable.ic_citizen_image)
+                        .addIconID(R.drawable.icon_citizen)
+                        .addImageID(R.drawable.image_citizen)
                         .addTitleID(R.string.character_citizen_title)
                         .addSubtitleID(R.string.character_citizen_subtitle)
                         .addInfoID(R.string.character_citizen_info)
@@ -85,8 +85,8 @@ public class CharacterBase {
                         .create();
             case Witch:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_witch_icon)
-                        .addImageID(R.drawable.ic_witch_image)
+                        .addIconID(R.drawable.icon_witch)
+                        .addImageID(R.drawable.image_witch)
                         .addTitleID(R.string.character_witch_title)
                         .addSubtitleID(R.string.character_witch_subtitle)
                         .addInfoID(R.string.character_witch_info)
@@ -94,8 +94,8 @@ public class CharacterBase {
                         .create();
             case Hunter:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_hunter_icon)
-                        .addImageID(R.drawable.ic_hunter_image)
+                        .addIconID(R.drawable.icon_hunter)
+                        .addImageID(R.drawable.image_hunter)
                         .addTitleID(R.string.character_hunter_title)
                         .addSubtitleID(R.string.character_hunter_subtitle)
                         .addInfoID(R.string.character_hunter_info)
@@ -103,8 +103,8 @@ public class CharacterBase {
                         .create();
             case Milkman:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_milkman_icon)
-                        .addImageID(R.drawable.ic_milkman_image)
+                        .addIconID(R.drawable.icon_milkman)
+                        .addImageID(R.drawable.image_milkman)
                         .addTitleID(R.string.character_milkman_title)
                         .addSubtitleID(R.string.character_milkman_subtitle)
                         .addInfoID(R.string.character_milkman_info)
@@ -112,8 +112,8 @@ public class CharacterBase {
                         .create();
             case Roommates:
                 return new CharacterItem.Builder()
-                        .addIconID(R.drawable.ic_roomates_icon)
-                        .addImageID(R.drawable.ic_roomates_image)
+                        .addIconID(R.drawable.icon_roomates)
+                        .addImageID(R.drawable.image_roomates)
                         .addTitleID(R.string.character_roommates_title)
                         .addSubtitleID(R.string.character_roommates_subtitle)
                         .addInfoID(R.string.character_roommates_info)
