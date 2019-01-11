@@ -15,16 +15,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import dummies.palermo.Game.GameActivity;
+
 public class NewGameFragment extends Fragment {
 
+    public static final String EXTRA_IS_MULTI_DEVICE = "com.dummies.palermo.isMultiDevice";
+
     public static final int MAX_PLAYERS = 100;
+
+    boolean isMultiDevice;
 
     EditText titleText;
     EditText playerCountText;
     Button decreaseCountButton;
     Button increaseCountButton;
-    Switch modeSwitch;
     Button createButton;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        isMultiDevice = getActivity().getIntent().getBooleanExtra(EXTRA_IS_MULTI_DEVICE,
+                false);
+    }
 
     @Nullable
     @Override
@@ -35,7 +48,6 @@ public class NewGameFragment extends Fragment {
         playerCountText = view.findViewById(R.id.fragment_new_game_player_count);
         decreaseCountButton = view.findViewById(R.id.fragment_new_game_decrease_button);
         increaseCountButton = view.findViewById(R.id.fragment_new_game_increase_button);
-        modeSwitch = view.findViewById(R.id.fragment_new_game_mode_switch);
         createButton = view.findViewById(R.id.fragment_new_game_create_button);
 
         titleText.setText("Game Title");
@@ -78,20 +90,34 @@ public class NewGameFragment extends Fragment {
             }
         });
 
-        modeSwitch.setChecked(false);
 
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Start game with current settings
-                String title = titleText.getText().toString();
-                int playerCount = getPlayers();
-                boolean mode = modeSwitch.isChecked();
+        if (isMultiDevice) {
+            // Start advertising lobby
+            createButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Start game with current settings
+                    String title = titleText.getText().toString();
+                    int playerCount = getPlayers();
 
-                Intent intent = new Intent(getActivity(), LobbyActivity.class);
-                startActivity(intent);
-            }
-        });
+                    Intent intent = LobbyActivity.newIntent(getActivity(), true, title,
+                            playerCount);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            createButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Start game with current settings
+                    String title = titleText.getText().toString();
+                    int playerCount = getPlayers();
+
+                    Intent intent = new Intent(getActivity(), GameActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
         return view;
     }

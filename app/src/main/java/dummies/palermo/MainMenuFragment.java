@@ -14,14 +14,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
+import dummies.palermo.PlayMenuFragments.PlayMenuHostJoinFragment;
 import dummies.palermo.PlayMenuFragments.PlayMenuMainFragment;
-import dummies.palermo.PlayMenuFragments.PlayMenuOptionsFragment;
+import dummies.palermo.PlayMenuFragments.PlayMenuNewLoadFragment;
+import dummies.palermo.PlayMenuFragments.PlayMenuSingleMultiFragment;
 
 public class MainMenuFragment extends Fragment {
 
     public static final String TAG = "MainMenuFragment";
 
-    public static final int PLAY_MENU_PAGES = 2;
+    public static final int PLAY_MENU_PAGES = 4;
 
     View view;
     ViewPager playMenuPager;
@@ -48,7 +50,11 @@ public class MainMenuFragment extends Fragment {
                     case 0:
                         return new PlayMenuMainFragment();
                     case 1:
-                        return new PlayMenuOptionsFragment();
+                        return new PlayMenuNewLoadFragment();
+                    case 2:
+                        return new PlayMenuSingleMultiFragment();
+                    case 3:
+                        return new PlayMenuHostJoinFragment();
                 }
                 return null;
             }

@@ -14,19 +14,24 @@ import dummies.palermo.LoadGameActivity;
 import dummies.palermo.NewGameActivity;
 import dummies.palermo.R;
 
-public class PlayMenuOptionsFragment extends Fragment {
+public class PlayMenuNewLoadFragment extends PlayMenuFragment {
+
+    @Override
+    protected int currentPage() {
+        return 1;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.play_menu_new_game_opts, container, false);
+        View view = inflater.inflate(R.layout.play_menu_new_load, container, false);
 
         ImageView newGameButton = view.findViewById(R.id.play_menu_new_game_button);
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Start new game activity
-                Intent intent = new Intent(getActivity(), NewGameActivity.class);
-                startActivity(intent);
+                setMenuPage(currentPage() + 1);
             }
         });
 

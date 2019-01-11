@@ -12,7 +12,13 @@ import android.widget.ImageView;
 import dummies.palermo.MainMenuFragment;
 import dummies.palermo.R;
 
-public class PlayMenuMainFragment extends Fragment {
+public class PlayMenuMainFragment extends PlayMenuFragment {
+
+    @Override
+    protected int currentPage() {
+        return 0;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -22,8 +28,7 @@ public class PlayMenuMainFragment extends Fragment {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainMenuFragment)getParentFragment())
-                        .setPlayMenuPage(1);
+                setMenuPage(1);
             }
         });
 

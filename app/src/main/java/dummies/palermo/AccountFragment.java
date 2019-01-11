@@ -43,7 +43,7 @@ public class AccountFragment extends Fragment {
             public void onClick(View view) {
                 userLoggedIn = !userLoggedIn;
                 if (userLoggedIn) {
-                    profilePicture.setImageResource(R.drawable.side_menu_acount);
+                    profilePicture.setImageResource(R.drawable.side_menu_account);
                     usernameView.setText("George Venizelos");
                     loginButton.setText("Logout");
                     loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0,

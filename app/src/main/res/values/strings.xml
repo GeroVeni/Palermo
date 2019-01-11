@@ -59,6 +59,7 @@
     <string name="main_menu_background_video_cont_desc">Main menu background video</string>
     <string name="character_item_small_icon_cont_desc">Character Icon</string>
     <string name="character_item_large_image_cont_desc">Character image</string>
+    <string name="lobby_username_label">Username :</string>
 
     <!-- Other -->
 

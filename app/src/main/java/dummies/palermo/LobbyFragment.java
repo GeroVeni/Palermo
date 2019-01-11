@@ -1,6 +1,7 @@
 package dummies.palermo;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +14,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,15 +24,21 @@ public class LobbyFragment extends Fragment {
 
     public static final int PERMISSIONS_REQUEST_CODE = 1;
 
+    public static final String EXTRA_IS_HOST = "com.dummies.palermo.isHost";
+    public static final String EXTRA_TITLE = "com.dummies.palermo.title";
+    public static final String EXTRA_SUGGESTED_PLAYERS = "com.dummies.palermo.suggestedPlayers";
+
     ConnectionsManager manager;
+    String title;
     String username;
     List<String> endpoints;
+    int suggestedPlayers;
+    boolean isHost;
 
     TextView usernameView;
-    TextView statusView;
+    TextView titleView;
+    TextView playerCountView;
     RecyclerView recyclerView;
-    Button discoverButton;
-    Button advertiseButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +49,17 @@ public class LobbyFragment extends Fragment {
 
         endpoints = new ArrayList<>();
         endpoints.add(username);
+
+        // Get extras
+        Intent extraIntent = getActivity().getIntent();
+        // Check if you are the owner of the lobby
+        isHost = extraIntent.getBooleanExtra(EXTRA_IS_HOST, false);
+        // Get title extra
+        title = extraIntent.getStringExtra(EXTRA_TITLE);
+        // Get suggested players
+        suggestedPlayers = extraIntent.getIntExtra(EXTRA_SUGGESTED_PLAYERS, 0);
+
+        connectNearby();
     }
 
     @Nullable
@@ -51,43 +68,20 @@ public class LobbyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lobby, container, false);
 
         usernameView = view.findViewById(R.id.fragment_lobby_username);
-        statusView = view.findViewById(R.id.fragment_lobby_status_view);
+        titleView = view.findViewById(R.id.fragment_lobby_title_view);
         recyclerView = view.findViewById(R.id.fragment_lobby_recycler_view);
-        discoverButton = view.findViewById(R.id.fragment_lobby_discover_button);
-        advertiseButton = view.findViewById(R.id.fragment_lobby_advertise_button);
+        playerCountView = view.findViewById(R.id.fragment_lobby_player_count);
 
         usernameView.setText(username);
 
-        statusView.setText("Choose an action");
+        titleView.setText(title);
+
+        updatePlayersView(endpoints.size());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new NearbyAdapter());
 
-        discoverButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Start discovery
-                manager.startDiscovery();
-
-                // Deactivate buttons
-                enableButtons(false, false);
-            }
-        });
-
-        advertiseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Start advertising
-                manager.startAdvertising();
-
-                // Deactivate buttons
-                enableButtons(false, false);
-            }
-        });
-
         getPermissions();
-
-        enableButtons(true, true);
 
         return view;
     }
@@ -132,9 +126,16 @@ public class LobbyFragment extends Fragment {
         }
     }
 
-    void enableButtons(boolean discover, boolean advertise) {
-        discoverButton.setEnabled(discover);
-        advertiseButton.setEnabled(advertise);
+    void connectNearby() {
+        if (isHost) {
+            manager.startAdvertising();
+        } else {
+            manager.startDiscovery();
+        }
+    }
+
+    void updatePlayersView(int players) {
+        playerCountView.setText(String.format("%d/%d", players, suggestedPlayers));
     }
 
     private void getPermissions() {

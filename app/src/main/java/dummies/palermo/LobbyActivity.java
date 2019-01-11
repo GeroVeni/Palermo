@@ -1,11 +1,23 @@
 package dummies.palermo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 
 public class LobbyActivity extends SingleFragmentActivity {
+
+    public static Intent newIntent(Context context, boolean isHost, String title,
+                                   int suggestedPlayers) {
+        Intent intent = new Intent(context, LobbyActivity.class);
+        intent.putExtra(LobbyFragment.EXTRA_IS_HOST, isHost);
+        intent.putExtra(LobbyFragment.EXTRA_TITLE, title);
+        intent.putExtra(LobbyFragment.EXTRA_SUGGESTED_PLAYERS, suggestedPlayers);
+        return intent;
+    }
+
     @Override
     protected Fragment createFragment() {
         return new LobbyFragment();
