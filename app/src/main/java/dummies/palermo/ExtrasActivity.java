@@ -54,4 +54,9 @@ public class ExtrasActivity extends SideMenuActivity {
 
         setFragment(fragment);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

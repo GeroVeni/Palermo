@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,8 +59,6 @@ public class LobbyFragment extends Fragment {
         title = extraIntent.getStringExtra(EXTRA_TITLE);
         // Get suggested players
         suggestedPlayers = extraIntent.getIntExtra(EXTRA_SUGGESTED_PLAYERS, 0);
-
-        connectNearby();
     }
 
     @Nullable
@@ -87,9 +86,16 @@ public class LobbyFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        if (isHost) {
+            manager.startAdvertising();
+        }
+    }
+
+    @Override
     public void onStop() {
         manager.stopAdvertising();
-        manager.stopDiscovery();
         super.onStop();
     }
 
@@ -123,14 +129,6 @@ public class LobbyFragment extends Fragment {
         @Override
         public int getItemCount() {
             return endpoints.size();
-        }
-    }
-
-    void connectNearby() {
-        if (isHost) {
-            manager.startAdvertising();
-        } else {
-            manager.startDiscovery();
         }
     }
 

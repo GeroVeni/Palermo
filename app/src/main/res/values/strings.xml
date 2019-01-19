@@ -62,6 +62,15 @@
     <string name="lobby_username_label">Username :</string>
 
     <!-- Other -->
-
+    <string name="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        In sodales mollisornare. In laoreet eleifend diam, ut ultrices nisl congue at.
+        Nullam pulvinar erat lectus. Cras consectetur sagittis sem, sed venenatis sapien
+        pellentesque at. Pellentesque luctus tristique sem, et pretium orci molestie ut. Aenean
+        faucibus nibh vel neque tincidunt rutrum. Aenean aliquet arcu quis erat pretium, eu
+        hendrerit libero molestie. Vestibulum tempor ipsum ac maximus efficitur. In hac habitasse
+        platea dictumst. Sed tellus ligula, molestie sit amet mauris porta, mattis placerat massa.
+        Sed quis fringilla ante
+    </string>
 
 </resources>

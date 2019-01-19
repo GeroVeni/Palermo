@@ -1,5 +1,6 @@
 package dummies.palermo.PlayMenuFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import dummies.palermo.NewGameActivity;
+import dummies.palermo.NewJoinActivity;
 import dummies.palermo.R;
 
 public class PlayMenuHostJoinFragment extends PlayMenuFragment {
@@ -31,7 +33,7 @@ public class PlayMenuHostJoinFragment extends PlayMenuFragment {
             public void onClick(View view) {
                 // Host game
                 startActivity(NewGameActivity.newIntent(getActivity(), true));
-                Snackbar.make(view, "Hosting game", Snackbar.LENGTH_SHORT).show();
+//                Snackbar.make(view, "Hosting game", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -39,6 +41,8 @@ public class PlayMenuHostJoinFragment extends PlayMenuFragment {
             @Override
             public void onClick(View view) {
                 // Join game
+                Intent intent = new Intent(getActivity(), NewJoinActivity.class);
+                startActivity(intent);
                 Snackbar.make(view, "Joining game", Snackbar.LENGTH_SHORT).show();
             }
         });

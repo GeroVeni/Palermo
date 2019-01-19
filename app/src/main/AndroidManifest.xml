@@ -36,6 +36,7 @@
         <activity android:name=".LoadGameActivity" />
         <activity android:name=".Game.GameActivity" />
         <activity android:name=".LobbyActivity" />
+        <activity android:name=".NewJoinActivity" />
     </application>
 
 </manifest>

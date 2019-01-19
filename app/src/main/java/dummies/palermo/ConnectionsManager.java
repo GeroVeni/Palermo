@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -48,6 +49,8 @@ public class ConnectionsManager {
     }
 
     public void startAdvertising() {
+        Snackbar.make(activity.findViewById(android.R.id.content), "Starting advertising",
+                Snackbar.LENGTH_SHORT);
         AdvertisingOptions advertisingOptions =
                 new AdvertisingOptions.Builder().setStrategy(STRATEGY).build();
         Nearby.getConnectionsClient(activity)
@@ -69,10 +72,14 @@ public class ConnectionsManager {
     }
 
     public void stopAdvertising() {
+        Snackbar.make(activity.findViewById(android.R.id.content), "Stopping advertising",
+                Snackbar.LENGTH_SHORT);
         Nearby.getConnectionsClient(activity).stopAdvertising();
     }
 
     public void startDiscovery() {
+        Snackbar.make(activity.findViewById(android.R.id.content), "Starting discovering",
+                Snackbar.LENGTH_SHORT);
         DiscoveryOptions discoveryOptions =
                 new DiscoveryOptions.Builder().setStrategy(STRATEGY).build();
         Nearby.getConnectionsClient(activity)
@@ -92,6 +99,8 @@ public class ConnectionsManager {
     }
 
     public void stopDiscovery() {
+        Snackbar.make(activity.findViewById(android.R.id.content), "Stopping discovering",
+                Snackbar.LENGTH_SHORT);
         Nearby.getConnectionsClient(activity).stopDiscovery();
     }
 
@@ -121,9 +130,7 @@ public class ConnectionsManager {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     // The user confirmed, so we can accept the connection.
                                     Nearby.getConnectionsClient(activity)
-                                            .acceptConnection(endpointId,
-                                                    new ReceiveBytesPayloadListener(
-                                                            ConnectionsManager.this));
+                                            .acceptConnection(endpointId, payloadCallback);
                                 }
                             })
                     .setNegativeButton(
@@ -140,7 +147,8 @@ public class ConnectionsManager {
         }
 
         @Override
-        public void onConnectionResult(@NonNull String endpointId, @NonNull ConnectionResolution connectionResolution) {
+        public void onConnectionResult(@NonNull String endpointId,
+                                       @NonNull ConnectionResolution connectionResolution) {
             switch (connectionResolution.getStatus().getStatusCode()) {
                 case ConnectionsStatusCodes.STATUS_OK:
                     // We're connected! Can now start sending and receiving data.
@@ -190,20 +198,14 @@ public class ConnectionsManager {
         }
     };
 
-    static class ReceiveBytesPayloadListener extends PayloadCallback {
-
-        ConnectionsManager manager;
-
-        ReceiveBytesPayloadListener(ConnectionsManager manager) {
-            this.manager = manager;
-        }
+    private PayloadCallback payloadCallback = new PayloadCallback() {
 
         @Override
         public void onPayloadReceived(@NonNull String endpointId, @NonNull Payload payload) {
             // This always gets the full data of the payload. Will be null if it's not a BYTES
             // payload. You can check the payload type with payload.getType().
             byte[] receivedBytes = payload.asBytes();
-            manager.onBytesReceived(receivedBytes);
+            ConnectionsManager.this.onBytesReceived(receivedBytes);
         }
 
         @Override
@@ -211,6 +213,18 @@ public class ConnectionsManager {
             // Bytes payloads are sent as a single chunk, so you'll receive a SUCCESS update immediately
             // after the call to onPayloadReceived().
         }
+    };
+
+    public void setConnectionLifecycleCallback(ConnectionLifecycleCallback connectionLifecycleCallback) {
+        this.connectionLifecycleCallback = connectionLifecycleCallback;
+    }
+
+    public void setEndpointDiscoveryCallback(EndpointDiscoveryCallback endpointDiscoveryCallback) {
+        this.endpointDiscoveryCallback = endpointDiscoveryCallback;
+    }
+
+    public void setPayloadCallback(PayloadCallback payloadCallback) {
+        this.payloadCallback = payloadCallback;
     }
 
     private List<String> getEndpointList() {
