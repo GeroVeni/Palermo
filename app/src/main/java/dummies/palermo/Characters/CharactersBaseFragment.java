@@ -1,6 +1,7 @@
 package dummies.palermo.Characters;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -24,6 +25,7 @@ public class CharactersBaseFragment extends Fragment {
     public static final int CHARACTERS_PER_ROW = 2;
 
     RecyclerView recyclerView;
+    Parcelable recyclerViewState = null;
 
     @Nullable
     @Override
@@ -36,6 +38,20 @@ public class CharactersBaseFragment extends Fragment {
         setupAdapter();
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (recyclerViewState != null) {
+            recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
+        super.onPause();
     }
 
     private void setupAdapter() {

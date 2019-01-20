@@ -11,6 +11,8 @@ import dummies.palermo.Characters.CharactersFragment;
 
 public class ExtrasActivity extends SideMenuActivity {
 
+    int currentItem;
+
     public static final String EXTRA_MENU_ITEM_ID = "com.dummies.menu_item_id";
 
     public static Intent newIntent(Context packageContext, @IdRes int menuItemID) {
@@ -22,6 +24,7 @@ public class ExtrasActivity extends SideMenuActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currentItem = 0;
 
         int menuItemID = getIntent().getIntExtra(EXTRA_MENU_ITEM_ID, 0);
         onSideItemClicked(menuItemID);
@@ -29,6 +32,7 @@ public class ExtrasActivity extends SideMenuActivity {
 
     @Override
     void onSideItemClicked(int id) {
+        currentItem = id;
         Fragment fragment;
 
         switch (id) {
@@ -57,6 +61,21 @@ public class ExtrasActivity extends SideMenuActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        switch (currentItem) {
+            case R.id.side_menu_item_characters:
+                CharactersFragment fragment = (CharactersFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.fragment_container);
+                if (!fragment.onBackPressed()) { super.onBackPressed(); }
+                break;
+            default:
+                super.onBackPressed();
+                break;
+        }
+    }
+
+    void setFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit();
     }
 }

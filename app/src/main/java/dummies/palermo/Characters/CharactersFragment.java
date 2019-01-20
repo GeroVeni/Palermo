@@ -13,13 +13,19 @@ import dummies.palermo.R;
 
 public class CharactersFragment extends Fragment {
 
+    public static final String OPEN_CHARACTER = "openCharacter";
+
     FragmentManager fragmentManager;
+
+    boolean isOnBase;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         fragmentManager = getChildFragmentManager();
+
+        isOnBase = true;
     }
 
     @Nullable
@@ -44,14 +50,19 @@ public class CharactersFragment extends Fragment {
                 .newInstance(characterID);
         fragmentManager.beginTransaction()
                 .replace(R.id.character_fragment_container, fragment)
+                .addToBackStack(OPEN_CHARACTER)
                 .commit();
-
+        isOnBase = false;
     }
 
     public void onCloseCharacter() {
-        Fragment fragment = new CharactersBaseFragment();
-        fragmentManager.beginTransaction()
-                .replace(R.id.character_fragment_container, fragment)
-                .commit();
+        fragmentManager.popBackStack();
+        isOnBase = true;
+    }
+
+    public boolean onBackPressed() {
+        if (isOnBase) { return false; }
+        onCloseCharacter();
+        return true;
     }
 }

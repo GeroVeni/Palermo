@@ -93,10 +93,4 @@ public abstract class SideMenuActivity extends AppCompatActivity {
         drawer.closeDrawer(GravityCompat.START);
     }
 
-    void setFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .commit();
-    }
-
 }

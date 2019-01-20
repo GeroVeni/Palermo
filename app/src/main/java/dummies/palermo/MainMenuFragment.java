@@ -89,4 +89,6 @@ public class MainMenuFragment extends Fragment {
     public void setPlayMenuPage(int page) {
         playMenuPager.setCurrentItem(page, true);
     }
+
+    public int getPlayMenuPage() { return playMenuPager.getCurrentItem(); }
 }

@@ -32,8 +32,32 @@ public class MainMenuActivity extends SideMenuActivity  {
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         if (fragment == null) {
-            setFragment(new MainMenuFragment());
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new MainMenuFragment())
+                    .commit();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // TODO: 20-Jan-19 Find a more clever way to not duplicate this function in two places
+        // MainMenu activity AND SideMenuActivity
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+            return;
+        }
+
+        MainMenuFragment fragment = (MainMenuFragment)getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_container);
+        if (fragment.getPlayMenuPage() != 0) {
+            int page = fragment.getPlayMenuPage();
+            fragment.setPlayMenuPage(page - 1);
+            return;
+        }
+
+        super.onBackPressed();
+
     }
 
     @Override
