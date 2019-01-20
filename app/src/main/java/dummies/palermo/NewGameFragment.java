@@ -90,34 +90,23 @@ public class NewGameFragment extends Fragment {
             }
         });
 
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Start game with current settings
+                String title = titleText.getText().toString();
+                int playerCount = getPlayers();
 
-        if (isMultiDevice) {
-            // Start advertising lobby
-            createButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // Start game with current settings
-                    String title = titleText.getText().toString();
-                    int playerCount = getPlayers();
-
+                if (isMultiDevice) {
                     Intent intent = LobbyActivity.newIntent(getActivity(), true, title,
                             playerCount);
                     startActivity(intent);
-                }
-            });
-        } else {
-            createButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // Start game with current settings
-                    String title = titleText.getText().toString();
-                    int playerCount = getPlayers();
-
+                } else {
                     Intent intent = new Intent(getActivity(), GameActivity.class);
                     startActivity(intent);
                 }
-            });
-        }
+            }
+        });
 
         return view;
     }
