@@ -114,6 +114,7 @@ public class ConnectionsManager {
         Log.i("TAG", "Received: " + new String(bytes, UTF_8));
     }
 
+    // Handles connection to other endpoints
     private ConnectionLifecycleCallback connectionLifecycleCallback = new ConnectionLifecycleCallback() {
         @Override
         public void onConnectionInitiated(@NonNull final String endpointId, @NonNull ConnectionInfo connectionInfo) {
@@ -171,6 +172,7 @@ public class ConnectionsManager {
         }
     };
 
+    // Handles discovery callbacks
     private EndpointDiscoveryCallback endpointDiscoveryCallback = new EndpointDiscoveryCallback() {
         @Override
         public void onEndpointFound(@NonNull String endpointId  , @NonNull DiscoveredEndpointInfo discoveredEndpointInfo) {
@@ -198,6 +200,7 @@ public class ConnectionsManager {
         }
     };
 
+    // Handles message deliveries
     private PayloadCallback payloadCallback = new PayloadCallback() {
 
         @Override

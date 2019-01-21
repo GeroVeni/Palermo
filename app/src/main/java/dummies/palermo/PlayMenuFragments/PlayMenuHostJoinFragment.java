@@ -43,7 +43,7 @@ public class PlayMenuHostJoinFragment extends PlayMenuFragment {
                 // Join game
                 Intent intent = new Intent(getActivity(), NewJoinActivity.class);
                 startActivity(intent);
-                Snackbar.make(view, "Joining game", Snackbar.LENGTH_SHORT).show();
+//                Snackbar.make(view, "Joining game", Snackbar.LENGTH_SHORT).show();
             }
         });
 
