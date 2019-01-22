@@ -13,13 +13,15 @@
             android:id="@+id/play_menu_host_game_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/side_menu_settings" />
+            android:padding="8dp"
+            app:srcCompat="@drawable/test_button_host" />
 
         <ImageView
             android:id="@+id/play_menu_join_game_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/side_menu_rules" />
+            android:padding="8dp"
+            app:srcCompat="@drawable/test_button_join" />
     </LinearLayout>
 
 </FrameLayout>
