@@ -31,40 +31,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/fragment_new_game_decrease_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="P"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_new_game_player_count"
-        app:layout_constraintEnd_toStartOf="@+id/fragment_new_game_player_count"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragment_new_game_player_count" />
-
-    <Button
-        android:id="@+id/fragment_new_game_increase_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="N"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_new_game_player_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fragment_new_game_player_count"
-        app:layout_constraintTop_toTopOf="@+id/fragment_new_game_player_count" />
-
     <EditText
         android:id="@+id/fragment_new_game_player_count"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_new_game_decrease_button"
         app:layout_constraintEnd_toStartOf="@+id/fragment_new_game_increase_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/fragment_new_game_decrease_button"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toTopOf="@+id/fragment_new_game_decrease_button" />
 
     <TextView
         android:id="@+id/textView4"
@@ -86,8 +63,31 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Create"
+        android:text="Proceed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/fragment_new_game_increase_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_new_game_player_count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_new_game_player_count"
+        app:layout_constraintTop_toTopOf="@+id/fragment_new_game_player_count"
+        app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
+
+    <ImageView
+        android:id="@+id/fragment_new_game_decrease_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_new_game_player_count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/ic_navigate_before_black_24dp" />
 </android.support.constraint.ConstraintLayout>

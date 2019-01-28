@@ -1,4 +1,4 @@
-package dummies.palermo.Characters;
+package dummies.palermo.characters;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import dummies.palermo.Models.CharacterBase;
-import dummies.palermo.Models.CharacterItem;
+import dummies.palermo.models.CharacterBase;
+import dummies.palermo.models.CharacterItem;
 import dummies.palermo.R;
 
 public class CharactersPageFragment extends Fragment {
@@ -35,7 +35,7 @@ public class CharactersPageFragment extends Fragment {
         View view = inflater.inflate(R.layout.character_item_large, container, false);
 
         int characterID = getArguments().getInt(ARG_CHAR_ID);
-        CharacterItem item = CharacterBase.getCharacterBase().getCharacter(characterID);
+        CharacterItem item = CharacterBase.getCharacterBase().getCharacterItem(characterID);
 
         ImageView imageView = view.findViewById(R.id.character_item_large_image);
         TextView infoView = view.findViewById(R.id.character_item_large_info);

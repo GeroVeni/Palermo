@@ -1,4 +1,4 @@
-package dummies.palermo.Characters;
+package dummies.palermo.characters;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

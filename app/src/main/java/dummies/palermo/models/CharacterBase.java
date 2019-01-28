@@ -1,4 +1,4 @@
-package dummies.palermo.Models;
+package dummies.palermo.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +23,11 @@ public class CharacterBase {
         characterItemList = new ArrayList<>();
 
         for (Character character : Character.values()) {
-            characterItemList.add(getCharacter(character));
+            characterItemList.add(getCharacterItem(character));
         }
     }
 
-    private CharacterItem getCharacter(Character character) {
+    private CharacterItem getCharacterItem(Character character) {
         switch (character) {
             case ThiefKnown:
                 return new CharacterItem.Builder()
@@ -125,7 +125,7 @@ public class CharacterBase {
         return new CharacterItem();
     }
 
-    public CharacterItem getCharacter(int position) {
+    public CharacterItem getCharacterItem(int position) {
         return characterItemList.get(position);
     }
 

@@ -43,6 +43,7 @@ public class ConnectionsManager {
     private Activity activity;
     private String username;
 
+    // TODO: 22-Jan-19 Change activity to application context
     public ConnectionsManager(Activity activity, String username) {
         this.activity = activity;
         this.username = username;

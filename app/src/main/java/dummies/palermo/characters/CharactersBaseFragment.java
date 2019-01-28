@@ -1,10 +1,9 @@
-package dummies.palermo.Characters;
+package dummies.palermo.characters;
 
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,12 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import java.util.List;
-
-import dummies.palermo.Models.CharacterBase;
-import dummies.palermo.Models.CharacterItem;
+import dummies.palermo.models.CharacterBase;
+import dummies.palermo.models.CharacterItem;
 import dummies.palermo.R;
 
 public class CharactersBaseFragment extends Fragment {
@@ -77,7 +73,7 @@ public class CharactersBaseFragment extends Fragment {
 
         void bindCharacter(int characterID) {
             this.characterID = characterID;
-            CharacterItem item = CharacterBase.getCharacterBase().getCharacter(characterID);
+            CharacterItem item = CharacterBase.getCharacterBase().getCharacterItem(characterID);
 
             icon.setImageResource(item.getIconID());
         }

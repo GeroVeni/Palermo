@@ -1,4 +1,4 @@
-package dummies.palermo.Models;
+package dummies.palermo.models;
 
 public enum Character {
     ThiefKnown,

@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
-import dummies.palermo.PlayMenuFragments.PlayMenuHostJoinFragment;
-import dummies.palermo.PlayMenuFragments.PlayMenuMainFragment;
-import dummies.palermo.PlayMenuFragments.PlayMenuNewLoadFragment;
-import dummies.palermo.PlayMenuFragments.PlayMenuSingleMultiFragment;
+import dummies.palermo.play_menu_fragments.PlayMenuHostJoinFragment;
+import dummies.palermo.play_menu_fragments.PlayMenuMainFragment;
+import dummies.palermo.play_menu_fragments.PlayMenuNewLoadFragment;
+import dummies.palermo.play_menu_fragments.PlayMenuSingleMultiFragment;
 
 public class MainMenuFragment extends Fragment {
 

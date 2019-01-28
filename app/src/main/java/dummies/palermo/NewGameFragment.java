@@ -13,15 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 
-import dummies.palermo.Game.GameActivity;
+import dummies.palermo.game.GameActivity;
+import dummies.palermo.models.GameMaker;
 
 public class NewGameFragment extends Fragment {
-
-    public static final String EXTRA_IS_MULTI_DEVICE = "com.dummies.palermo.isMultiDevice";
-
-    public static final int MAX_PLAYERS = 100;
 
     boolean isMultiDevice;
 
@@ -30,14 +26,6 @@ public class NewGameFragment extends Fragment {
     Button decreaseCountButton;
     Button increaseCountButton;
     Button createButton;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        isMultiDevice = getActivity().getIntent().getBooleanExtra(EXTRA_IS_MULTI_DEVICE,
-                false);
-    }
 
     @Nullable
     @Override
@@ -75,7 +63,7 @@ public class NewGameFragment extends Fragment {
             public void onClick(View view) {
                 int val = getPlayers();
                 --val;
-                if (val < 2) { val = 2; }
+                if (val < Rules.MIN_PLAYERS) { val = Rules.MIN_PLAYERS; }
                 updateCount(val);
             }
         });
@@ -85,7 +73,6 @@ public class NewGameFragment extends Fragment {
             public void onClick(View view) {
                 int val = getPlayers();
                 ++val;
-                if (val > MAX_PLAYERS) { val = MAX_PLAYERS; }
                 updateCount(val);
             }
         });
@@ -97,14 +84,20 @@ public class NewGameFragment extends Fragment {
                 String title = titleText.getText().toString();
                 int playerCount = getPlayers();
 
-                if (isMultiDevice) {
-                    Intent intent = LobbyActivity.newIntent(getActivity(), true, title,
-                            playerCount);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getActivity(), GameActivity.class);
-                    startActivity(intent);
-                }
+                GameMaker gm = GameMaker.getInstance();
+                gm.title = title;
+                gm.suggestedPlayerCount = playerCount;
+
+                startActivity(new Intent(getActivity(), CharacterSelectActivity.class));
+
+//                if (isMultiDevice) {
+//                    Intent intent = LobbyActivity.newIntent(getActivity(), true, title,
+//                            playerCount);
+//                    startActivity(intent);
+//                } else {
+//                    Intent intent = GameActivity.newIntent(getActivity(), title, playerCount);
+//                    startActivity(intent);
+//                }
             }
         });
 
@@ -121,10 +114,9 @@ public class NewGameFragment extends Fragment {
 
     private int getPlayers() {
         String content = playerCountText.getText().toString();
-        if (content.equals("")) return 2;
+        if (content.equals("")) return Rules.MIN_PLAYERS;
         int val = Integer.valueOf(content);
-        if (val < 2) return 2;
-        if (val > MAX_PLAYERS) return MAX_PLAYERS;
+        if (val < Rules.MIN_PLAYERS) return Rules.MIN_PLAYERS;
         return val;
     }
 }

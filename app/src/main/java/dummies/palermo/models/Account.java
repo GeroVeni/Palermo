@@ -1,7 +1,4 @@
-package dummies.palermo.Models;
-
-import dummies.palermo.Models.Password;
-import dummies.palermo.Models.Stats;
+package dummies.palermo.models;
 
 public class Account {
     String username;

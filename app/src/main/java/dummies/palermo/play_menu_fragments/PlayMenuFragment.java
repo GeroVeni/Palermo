@@ -1,4 +1,4 @@
-package dummies.palermo.PlayMenuFragments;
+package dummies.palermo.play_menu_fragments;
 
 import android.support.v4.app.Fragment;
 

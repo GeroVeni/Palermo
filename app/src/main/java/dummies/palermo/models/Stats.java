@@ -1,4 +1,4 @@
-package dummies.palermo.Models;
+package dummies.palermo.models;
 
 import android.util.ArrayMap;
 

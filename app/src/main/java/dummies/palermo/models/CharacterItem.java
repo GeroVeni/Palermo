@@ -1,14 +1,8 @@
-package dummies.palermo.Models;
+package dummies.palermo.models;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
-import android.support.v4.content.res.ResourcesCompat;
-
-import dummies.palermo.R;
 
 public class CharacterItem {
     private @DrawableRes

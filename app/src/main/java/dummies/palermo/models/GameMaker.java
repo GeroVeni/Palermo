@@ -1,4 +1,4 @@
 package dummies.palermo.Models;
 
-public class Password {
+public class GameMaker {
 }

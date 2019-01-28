@@ -2,9 +2,9 @@
 <resources>
 
     <!-- Old values -->
-    <!--<color name="colorPrimary">#292728</color>-->
-    <!--<color name="colorPrimaryDark">#3B3B3C</color>-->
-    <!--<color name="colorAccent">#ed1b33</color>-->
+    <!--<color title="colorPrimary">#292728</color>-->
+    <!--<color title="colorPrimaryDark">#3B3B3C</color>-->
+    <!--<color title="colorAccent">#ed1b33</color>-->
 
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#424242</color>

@@ -34,9 +34,10 @@
         <activity android:name=".ExtrasActivity" />
         <activity android:name=".NewGameActivity" />
         <activity android:name=".LoadGameActivity" />
-        <activity android:name=".Game.GameActivity" />
+        <activity android:name=".game.GameActivity" />
         <activity android:name=".LobbyActivity" />
         <activity android:name=".NewJoinActivity" />
+        <activity android:name=".CharacterSelectActivity" />
     </application>
 
 </manifest>
