@@ -33,6 +33,7 @@ public class PlayMenuHostJoinFragment extends PlayMenuFragment {
             public void onClick(View view) {
                 // Host game
                 GameMaker gm = GameMaker.getInstance();
+                gm.reset();
                 gm.isMultiDevice = true;
                 startActivity(new Intent(getActivity(), NewGameActivity.class));
             }

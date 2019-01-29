@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/entry_character_select_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Policeman" />
+
+    <TextView
+        android:id="@+id/entry_character_select_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/entry_character_select_decrease"
+        app:layout_constraintEnd_toStartOf="@+id/entry_character_select_increase"
+        app:layout_constraintTop_toTopOf="@+id/entry_character_select_decrease"
+        tools:text="5" />
+
+    <ImageView
+        android:id="@+id/entry_character_select_decrease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/entry_character_select_name"
+        app:layout_constraintEnd_toStartOf="@+id/entry_character_select_amount"
+        app:layout_constraintTop_toTopOf="@+id/entry_character_select_name"
+        app:srcCompat="@drawable/ic_navigate_before_black_24dp" />
+
+    <ImageView
+        android:id="@+id/entry_character_select_increase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/entry_character_select_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/entry_character_select_amount"
+        app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
+</android.support.constraint.ConstraintLayout>

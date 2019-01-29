@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import dummies.palermo.game.GameActivity;
 import dummies.palermo.models.GameMaker;
@@ -23,8 +24,8 @@ public class NewGameFragment extends Fragment {
 
     EditText titleText;
     EditText playerCountText;
-    Button decreaseCountButton;
-    Button increaseCountButton;
+    ImageView decreaseCountButton;
+    ImageView increaseCountButton;
     Button createButton;
 
     @Nullable

@@ -33,6 +33,7 @@ public class PlayMenuSingleMultiFragment extends PlayMenuFragment {
             public void onClick(View view) {
                 // Single device game
                 GameMaker gm = GameMaker.getInstance();
+                gm.reset();
                 gm.isMultiDevice = false;
                 Intent intent = new Intent(getActivity(), NewGameActivity.class);
                 startActivity(intent);
