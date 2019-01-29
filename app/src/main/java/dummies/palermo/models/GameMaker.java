@@ -18,10 +18,10 @@ public class GameMaker {
 
     private GameMaker() {
         characters = new ArrayList<>();
+        characterCounts = new ArrayList<>();
         for (Character character : Character.values()) {
             characters.add(character);
         }
-        characterCounts = new ArrayList<>(characters.size());
         reset();
     }
 
@@ -79,8 +79,9 @@ public class GameMaker {
         multiDevice = false;
         title = "";
         suggestedPlayerCount = Rules.MIN_PLAYERS;
-        for (int i = 0; i < characterCounts.size(); ++i) {
-            characterCounts.set(i, 0);
+        characterCounts.clear();
+        for (int i = 0; i < characters.size(); ++i) {
+            characterCounts.add(0);
         }
     }
 }

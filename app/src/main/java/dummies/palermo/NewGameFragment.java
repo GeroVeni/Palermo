@@ -20,8 +20,6 @@ import dummies.palermo.models.GameMaker;
 
 public class NewGameFragment extends Fragment {
 
-    boolean isMultiDevice;
-
     EditText titleText;
     EditText playerCountText;
     ImageView decreaseCountButton;
@@ -40,8 +38,8 @@ public class NewGameFragment extends Fragment {
         createButton = view.findViewById(R.id.fragment_new_game_create_button);
 
         titleText.setText("Game Title");
-
-        playerCountText.setText("2");
+        
+        playerCountText.setText(String.valueOf(Rules.MIN_PLAYERS));
         playerCountText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -59,6 +57,7 @@ public class NewGameFragment extends Fragment {
             }
         });
 
+        // TODO: 29-Jan-19 Implement onHoldListeners to increase/decrease numbers faster
         decreaseCountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,8 +85,8 @@ public class NewGameFragment extends Fragment {
                 int playerCount = getPlayers();
 
                 GameMaker gm = GameMaker.getInstance();
-                gm.title = title;
-                gm.suggestedPlayerCount = playerCount;
+                gm.setTitle(title);
+                gm.setSuggestedPlayerCount(playerCount);
 
                 startActivity(new Intent(getActivity(), CharacterSelectActivity.class));
 

@@ -10,6 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:contentDescription="@string/play_menu_play_button_cont_desc"
-        android:src="@drawable/play_icon" />
+        android:src="@drawable/play_menu_play_icon" />
 
 </FrameLayout>

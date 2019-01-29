@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +14,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
-
 import dummies.palermo.models.Character;
 import dummies.palermo.models.GameMaker;
 
 public class CharacterSelectFragment extends Fragment {
 
     GameMaker gameMaker;
+    boolean charactersUnlocked;
 
     RecyclerView recyclerView;
     Button unlockCharactersButton;
@@ -31,6 +31,7 @@ public class CharacterSelectFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         gameMaker = GameMaker.getInstance();
+        charactersUnlocked = false;
     }
 
     @Nullable
@@ -42,9 +43,33 @@ public class CharacterSelectFragment extends Fragment {
         unlockCharactersButton = view.findViewById(R.id.fragment_character_select_unlock_characters_button);
         createButton = view.findViewById(R.id.fragment_character_select_create_button);
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        recyclerView.setAdapter(new CharacterAdapter());
 
+        updateUI();
+        unlockCharactersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                charactersUnlocked = true;
+                updateUI();
+            }
+        });
 
         return view;
+    }
+
+    void updateUI() {
+        int unlockVisibility = View.VISIBLE;
+        if (charactersUnlocked) {
+            unlockVisibility = View.INVISIBLE;
+        }
+        unlockCharactersButton.setVisibility(unlockVisibility);
+        recyclerView.getAdapter().notifyDataSetChanged();
     }
 
     class CharacterHolder extends RecyclerView.ViewHolder
@@ -76,6 +101,18 @@ public class CharacterSelectFragment extends Fragment {
 
             increaseButton.setOnClickListener(this);
             decreaseButton.setOnClickListener(this);
+
+            if (charactersUnlocked) {
+                increaseButton.setVisibility(View.VISIBLE);
+                if (charCount == 0) {
+                    decreaseButton.setVisibility(View.INVISIBLE);
+                } else {
+                    decreaseButton.setVisibility(View.VISIBLE);
+                }
+            } else {
+                increaseButton.setVisibility(View.INVISIBLE);
+                decreaseButton.setVisibility(View.INVISIBLE);
+            }
         }
 
         @Override
@@ -89,6 +126,7 @@ public class CharacterSelectFragment extends Fragment {
             int charCount = gameMaker.getCharacterCount(characterPosition);
             try {
                 gameMaker.setCharacterCount(characterPosition, charCount + change);
+                recyclerView.getAdapter().notifyItemChanged(characterPosition);
             } catch (Exception e) {
                 // Operation invalid; show user cause
                 Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG).show();

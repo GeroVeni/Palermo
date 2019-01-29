@@ -34,7 +34,7 @@ public class PlayMenuSingleMultiFragment extends PlayMenuFragment {
                 // Single device game
                 GameMaker gm = GameMaker.getInstance();
                 gm.reset();
-                gm.isMultiDevice = false;
+                gm.setMultiDevice(false);
                 Intent intent = new Intent(getActivity(), NewGameActivity.class);
                 startActivity(intent);
             }
