@@ -1,5 +1,6 @@
 package dummies.palermo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import dummies.palermo.game.GameActivity;
 import dummies.palermo.models.Character;
 import dummies.palermo.models.GameMaker;
 
@@ -51,7 +53,6 @@ public class CharacterSelectFragment extends Fragment {
         });
         recyclerView.setAdapter(new CharacterAdapter());
 
-        updateUI();
         unlockCharactersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +60,22 @@ public class CharacterSelectFragment extends Fragment {
                 updateUI();
             }
         });
+
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: 29-Jan-19 Create save game point
+                if (gameMaker.isMultiDevice()) {
+                    // multi device game as host
+                    startActivity(LobbyActivity.newIntent(getActivity(), true,
+                            gameMaker.getTitle(), gameMaker.getSuggestedPlayerCount()));
+                } else {
+                    startActivity(new Intent(getActivity(), GameActivity.class));
+                }
+            }
+        });
+
+        updateUI();
 
         return view;
     }
@@ -89,6 +106,9 @@ public class CharacterSelectFragment extends Fragment {
             characterAmountTextView = itemView.findViewById(R.id.entry_character_select_amount);
             decreaseButton = itemView.findViewById(R.id.entry_character_select_decrease);
             increaseButton = itemView.findViewById(R.id.entry_character_select_increase);
+
+            increaseButton.setOnClickListener(this);
+            decreaseButton.setOnClickListener(this);
         }
 
         void bindHolder(int position) {
@@ -98,9 +118,6 @@ public class CharacterSelectFragment extends Fragment {
 
             characterNameTextView.setText(character.toString());
             characterAmountTextView.setText(String.valueOf(charCount));
-
-            increaseButton.setOnClickListener(this);
-            decreaseButton.setOnClickListener(this);
 
             if (charactersUnlocked) {
                 increaseButton.setVisibility(View.VISIBLE);
@@ -125,8 +142,9 @@ public class CharacterSelectFragment extends Fragment {
             }
             int charCount = gameMaker.getCharacterCount(characterPosition);
             try {
+                if (charCount + change < 0) change = -charCount;
                 gameMaker.setCharacterCount(characterPosition, charCount + change);
-                recyclerView.getAdapter().notifyItemChanged(characterPosition);
+                updateUI();
             } catch (Exception e) {
                 // Operation invalid; show user cause
                 Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG).show();

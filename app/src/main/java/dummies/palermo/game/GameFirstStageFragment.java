@@ -46,7 +46,7 @@ public class GameFirstStageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_first_stage, container, false);
 
         // Extract fragment arguments
-        @DrawableRes int characterImageId = getArguments().getInt(ARG_CHARACTER_IMG_ID, 0);
+//        @DrawableRes int characterImageId = getArguments().getInt(ARG_CHARACTER_IMG_ID, 0);
 
         playerNameEditText = view.findViewById(R.id.fragment_first_stage_name_edit_text);
         confirmButton = view.findViewById(R.id.fragment_first_stage_confirm_button);
@@ -66,7 +66,7 @@ public class GameFirstStageFragment extends Fragment {
                     isConfirmed = true;
                 } else {
                     // Proceed to the next character
-
+                    Toast.makeText(getActivity(), "Next!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

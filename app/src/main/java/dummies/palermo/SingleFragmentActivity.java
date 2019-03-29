@@ -46,7 +46,8 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
         // Load ad
         AdView adView = findViewById(R.id.adView2);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("1A0247517010645472F63A7324CE6AF0").build();
         adView.loadAd(adRequest);
     }
 

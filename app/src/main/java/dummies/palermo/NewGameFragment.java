@@ -24,7 +24,7 @@ public class NewGameFragment extends Fragment {
     EditText playerCountText;
     ImageView decreaseCountButton;
     ImageView increaseCountButton;
-    Button createButton;
+    ImageView createButton;
 
     @Nullable
     @Override
