@@ -42,6 +42,7 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
+        // TODO: 01-Apr-19 Change pager to swipable fragments
         playMenuPager = view.findViewById(R.id.main_menu_play_menu_pager);
         playMenuPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override

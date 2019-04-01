@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import dummies.palermo.R;
 import dummies.palermo.Rules;
 
 public class GameMaker {
@@ -52,10 +53,29 @@ public class GameMaker {
 
     public void setSuggestedPlayerCount(int suggestedPlayerCount) {
         this.suggestedPlayerCount = suggestedPlayerCount;
+        // check if it is less than the minimum
+        if (suggestedPlayerCount < Rules.MIN_PLAYERS) {
+            suggestedPlayerCount = Rules.MIN_PLAYERS;
+        }
+
+        setDefaultCharacters();
     }
 
     public void setDefaultCharacters() {
         // TODO: 29-Jan-19 Set default characters depending on the suggestedPlayerCount
+        int totalThieves = suggestedPlayerCount / 4;
+        int secretThieves = 1;
+        int knownThieves = totalThieves - secretThieves;
+        int cops = 1;
+        int citizens = suggestedPlayerCount - totalThieves - cops;
+        try {
+            setCharacterCount(Character.getPos(Character.ThiefSecret), secretThieves);
+            setCharacterCount(Character.getPos(Character.ThiefKnown), knownThieves);
+            setCharacterCount(Character.getPos(Character.Policeman), cops);
+            setCharacterCount(Character.getPos(Character.Citizen), citizens);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public Character getCharacter(int position) {
@@ -68,6 +88,10 @@ public class GameMaker {
 
     public void setCharacterCount(int position, int value) throws Exception {
         // TODO: 29-Jan-19 Add checks for character counts
+
+        // update total player count
+        int prev = characterCounts.get(position);
+        suggestedPlayerCount += value - prev;
         characterCounts.set(position, value);
     }
 
@@ -75,13 +99,18 @@ public class GameMaker {
         return characters.size();
     }
 
-    public void reset() {
+    public void reset(int suggestedPlayerCount) {
         multiDevice = false;
         title = "";
-        suggestedPlayerCount = Rules.MIN_PLAYERS;
         characterCounts.clear();
         for (int i = 0; i < characters.size(); ++i) {
             characterCounts.add(0);
         }
+        // TODO: 01-Apr-19 Remember last value used by user
+        setSuggestedPlayerCount(suggestedPlayerCount);
+    }
+
+    public void reset() {
+        reset(Rules.MIN_PLAYERS);
     }
 }

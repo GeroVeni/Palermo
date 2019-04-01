@@ -1,17 +1,19 @@
 package dummies.palermo;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,18 +24,15 @@ import dummies.palermo.models.GameMaker;
 public class CharacterSelectFragment extends Fragment {
 
     GameMaker gameMaker;
-    boolean charactersUnlocked;
 
     RecyclerView recyclerView;
-    Button unlockCharactersButton;
-    Button createButton;
+    ImageView createButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         gameMaker = GameMaker.getInstance();
-        charactersUnlocked = false;
     }
 
     @Nullable
@@ -42,24 +41,19 @@ public class CharacterSelectFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_character_select, container, false);
 
         recyclerView = view.findViewById(R.id.fragment_character_select_recycler_view);
-        unlockCharactersButton = view.findViewById(R.id.fragment_character_select_unlock_characters_button);
         createButton = view.findViewById(R.id.fragment_character_select_create_button);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity()) {
             @Override
             public boolean canScrollVertically() {
                 return false;
             }
-        });
+        };
+        recyclerView.setLayoutManager(layoutManager);
+        DividerItemDecorator dividerItemDecoration = new DividerItemDecorator(
+                ContextCompat.getDrawable(getActivity(), R.drawable.horizontal_divider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(new CharacterAdapter());
-
-        unlockCharactersButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                charactersUnlocked = true;
-                updateUI();
-            }
-        });
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,12 +75,34 @@ public class CharacterSelectFragment extends Fragment {
     }
 
     void updateUI() {
-        int unlockVisibility = View.VISIBLE;
-        if (charactersUnlocked) {
-            unlockVisibility = View.INVISIBLE;
-        }
-        unlockCharactersButton.setVisibility(unlockVisibility);
         recyclerView.getAdapter().notifyDataSetChanged();
+    }
+
+    public class DividerItemDecorator extends RecyclerView.ItemDecoration {
+        private Drawable mDivider;
+
+        public DividerItemDecorator(Drawable divider) {
+            mDivider = divider;
+        }
+
+        @Override
+        public void onDraw(Canvas canvas, RecyclerView parent, RecyclerView.State state) {
+            int dividerLeft = parent.getPaddingLeft();
+            int dividerRight = parent.getWidth() - parent.getPaddingRight();
+
+            int childCount = parent.getChildCount();
+            for (int i = 0; i <= childCount - 2; i++) {
+                View child = parent.getChildAt(i);
+
+                RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+
+                int dividerTop = child.getBottom() + params.bottomMargin;
+                int dividerBottom = dividerTop + mDivider.getIntrinsicHeight();
+
+                mDivider.setBounds(dividerLeft, dividerTop, dividerRight, dividerBottom);
+                mDivider.draw(canvas);
+            }
+        }
     }
 
     class CharacterHolder extends RecyclerView.ViewHolder
@@ -119,16 +135,10 @@ public class CharacterSelectFragment extends Fragment {
             characterNameTextView.setText(character.toString());
             characterAmountTextView.setText(String.valueOf(charCount));
 
-            if (charactersUnlocked) {
-                increaseButton.setVisibility(View.VISIBLE);
-                if (charCount == 0) {
-                    decreaseButton.setVisibility(View.INVISIBLE);
-                } else {
-                    decreaseButton.setVisibility(View.VISIBLE);
-                }
-            } else {
-                increaseButton.setVisibility(View.INVISIBLE);
+            if (charCount == 0) {
                 decreaseButton.setVisibility(View.INVISIBLE);
+            } else {
+                decreaseButton.setVisibility(View.VISIBLE);
             }
         }
 

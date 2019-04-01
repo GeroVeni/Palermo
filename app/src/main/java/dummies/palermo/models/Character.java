@@ -1,16 +1,29 @@
 package dummies.palermo.models;
 
 public enum Character {
-    ThiefKnown,
+    // TODO: 01-Apr-19 Change enum to constants
     ThiefSecret,
-    Policeman,
-    Whore,
-    Doctor,
+    ThiefKnown,
+    Roommates,
+    Hunter,
     Citizen,
     Witch,
-    Hunter,
+    Policeman,
+    Doctor,
+    Whore,
     Milkman,
-    Roommates;
+
+//    ThiefSecret,
+//    ThiefKnown,
+//    Hunter,
+//    Roommates,
+//    Citizen,
+//    Witch,
+//    Doctor,
+//    Policeman,
+//    Whore,
+//    Milkman,
+    ;
 
     public static boolean isCharacterGood(Character character) {
         // TODO: 08-Jan-19 Add more bad characters
@@ -22,6 +35,13 @@ public enum Character {
             default:
                 return true;
         }
+    }
+
+    public static int getPos(Character character) {
+        for (int i = 0; i < values().length; i++) {
+            if (character == values()[i]) return i;
+        }
+        return -1;
     }
 }
 

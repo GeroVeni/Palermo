@@ -56,7 +56,7 @@ public class GameActivity extends SingleFragmentActivity {
         }
         Collections.shuffle(characters);
 
-        // TODO: 22-Jan-19 Add check when player size is bigger then character size
+        // TODO: 22-Jan-19 Add check when player size is bigger than character size
     }
 
     private void showPlayer(int position) {
@@ -71,7 +71,7 @@ public class GameActivity extends SingleFragmentActivity {
                 .commit();
     }
 
-    public void onPlayerFinisher() {
+    public void onPlayerFinished() {
         currentPosition ++;
         showPlayer(currentPosition);
     }

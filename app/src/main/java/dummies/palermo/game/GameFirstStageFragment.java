@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import dummies.palermo.R;
@@ -21,6 +22,7 @@ public class GameFirstStageFragment extends Fragment {
     boolean isConfirmed;
 
     EditText playerNameEditText;
+    ImageView characterImageView;
     Button confirmButton;
 
     public static GameFirstStageFragment newInstance(@DrawableRes int characterImageId) {
@@ -49,7 +51,10 @@ public class GameFirstStageFragment extends Fragment {
 //        @DrawableRes int characterImageId = getArguments().getInt(ARG_CHARACTER_IMG_ID, 0);
 
         playerNameEditText = view.findViewById(R.id.fragment_first_stage_name_edit_text);
+        characterImageView = view.findViewById(R.id.fragment_first_stage_character);
         confirmButton = view.findViewById(R.id.fragment_first_stage_confirm_button);
+
+        characterImageView.setVisibility(View.INVISIBLE);
 
         confirmButton.setText("Confirm");
         confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +69,9 @@ public class GameFirstStageFragment extends Fragment {
                     }
 
                     isConfirmed = true;
+                    confirmButton.setText("Done");
+                    // TODO: 01-Apr-19 Add smooth transition to visible
+                    characterImageView.setVisibility(View.VISIBLE);
                 } else {
                     // Proceed to the next character
                     Toast.makeText(getActivity(), "Next!", Toast.LENGTH_SHORT).show();

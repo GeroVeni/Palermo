@@ -6,9 +6,14 @@
     <!--<color title="colorPrimaryDark">#3B3B3C</color>-->
     <!--<color title="colorAccent">#ed1b33</color>-->
 
-    <color name="colorPrimary">#212121</color>
-    <color name="colorPrimaryDark">#424242</color>
-    <color name="colorAccent">#ff1744</color>
+    <!-- Second set -->
+    <!--<color name="colorPrimary">#212121</color>-->
+    <!--<color name="colorPrimaryDark">#424242</color>-->
+    <!--<color name="colorAccent">#ff1744</color>-->
+
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#212121</color>
+    <color name="colorAccent">#ff0000</color>
 
     <!-- Character colors -->
     <color name="character_thief_known">#a61b11</color>
